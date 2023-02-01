@@ -18,7 +18,7 @@
 package com.tyrantlucifer.array;
 
 /**
- * 题目 <a href="https://leetcode.cn/problems/binary-search/">Leecode 704</a>
+ * 题目 <a href="https://leetcode.cn/problems/binary-search/">leecode 704</a>
  */
 public class BinarySearch {
 
