@@ -11,21 +11,27 @@ public class Permutations {
     private static final List<List<Integer>> RESULT = new ArrayList<>();
     private static final List<Integer> PATH = new ArrayList<>();
 
-    public static void backtrace(int[] nums, int num, int start) {
+    public static void backtrace(int[] nums, boolean[] used, int num) {
         if (PATH.size() == num) {
             RESULT.add(new ArrayList<>(PATH));
             return;
         }
-        for (int i = start; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) {
+                continue;
+            }
             PATH.add(nums[i]);
-            backtrace(nums, num, i + 1);
+            used[i] = true;
+            backtrace(nums, used, num);
             PATH.remove(PATH.size() - 1);
+            used[i] = false;
         }
     }
 
     public static void main(String[] args) {
         int[] nums = new int[]{1, 2, 3};
-        backtrace(nums, 3, 0);
+        boolean[] used = new boolean[]{false, false, false};
+        backtrace(nums, used, 3);
         System.out.println(RESULT);
     }
 }
